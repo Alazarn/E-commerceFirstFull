@@ -1,0 +1,54 @@
+﻿@model CreateProductViewModel
+
+@{ Layout = "~/Views/Shared/admin_layout.cshtml";}
+
+<section class="">
+    <div class="container menu" style="justify-content:normal;">
+        <div>
+            <a asp-action="CreateUser" asp-controller="Admin">Create User</a><br />
+            <a asp-action="EditUsers" asp-controller="Admin">Edit Users</a><br />
+            <a asp-action="EditProducts" asp-controller="Admin">Edit Products</a><br />
+            <a asp-action="Index" asp-controller="Admin">Main Menu</a>
+        </div>
+        <form method="post" asp-controller="Admin" asp-action="CreateProduct" enctype="multipart/form-data">
+            <div class="form-parts">
+                <div class="form-part">
+                    <div class="form-group">
+                        <label asp-for="@Model.Title"></label>
+                        <input asp-for="@Model.Title" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Author"></label>
+                        <input asp-for="@Model.Author" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Price"></label>
+                        <input asp-for="@Model.Price" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Features"></label>
+                        <input asp-for="@Model.Features" />
+                    </div>                    
+                </div>
+                <div class="form-part">
+                    <div class="form-group" style="right:0px;">
+                        <label asp-for="@Model.Card"></label>
+                        <input type="file" name="Card" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Img"></label>
+                        <input  type="file" name="Img" />
+                    </div>
+                    <div class="form-group" style="align-self:center;">
+                        <label asp-for="@Model.Description"></label><br/>
+                        <textarea  asp-for="@Model.Description"></textarea>
+                    </div>
+                    <div class="" style="align-self:center;">
+                        <button type="submit">Create</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

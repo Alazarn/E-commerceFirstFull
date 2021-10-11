@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main Project", "Main Project", "{BCDBBF84-ADCD-4F2D-91BF-2403BA492518}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-commerceFirstFull", "Main Project\E-commerceFirstFull.csproj", "{3067835A-A545-4B31-83F1-932DB1800BA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{050D8205-A3D6-4569-B27F-139C45B115B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-commerceFirstFull.Tests", "Tests\E-commerceFirstFull.Tests\E-commerceFirstFull.Tests.csproj", "{C30AB566-DFD7-4215-895F-2F571814F215}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3067835A-A545-4B31-83F1-932DB1800BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3067835A-A545-4B31-83F1-932DB1800BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3067835A-A545-4B31-83F1-932DB1800BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3067835A-A545-4B31-83F1-932DB1800BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30AB566-DFD7-4215-895F-2F571814F215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30AB566-DFD7-4215-895F-2F571814F215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30AB566-DFD7-4215-895F-2F571814F215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30AB566-DFD7-4215-895F-2F571814F215}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3067835A-A545-4B31-83F1-932DB1800BA6} = {BCDBBF84-ADCD-4F2D-91BF-2403BA492518}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55904D6D-3CAB-4B9F-A556-EB190536503D}
+	EndGlobalSection
+EndGlobal

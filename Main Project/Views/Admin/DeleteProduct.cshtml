@@ -1,0 +1,15 @@
+﻿@model IEnumerable<E_commerceFirstFull.Models.User>
+
+@{ Layout = "~/Views/Shared/admin_layout.cshtml";}
+
+<section class="">
+    <div class="container menu">
+        <div>
+            <a asp-action="CreateUser" asp-controller="Admin">Create User</a><br />
+            <a asp-action="CreateProduct" asp-controller="Admin">Create New Product</a><br />
+            <a asp-action="EditProducts" asp-controller="Admin">Edit Existing Products</a><br />
+            <a asp-action="Index" asp-controller="Admin">Exit to Main Menu</a>
+        </div>        
+    </div>
+    <h1 class="text-danger">Product hasn`t been found in the list</h1>
+</section>

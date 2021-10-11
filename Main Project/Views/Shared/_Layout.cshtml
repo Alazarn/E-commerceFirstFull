@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MEGASTORE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/doc2.css" />
+</head>
+<body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*/////////////////////////////////////////////////////HEADER//////////////////////////////////////////////////////////*@
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark box-shadow" style="background: #30243e">
+            <div class="container-fluid">
+                <a class="navbar-brand h1 pt-2 brand" style="font-size: 32px;" asp-area="" asp-controller="Home" asp-action="Index"><i><span style="color: #CF1796; ">MEGA</span><span>STORE</span></i></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="dropbtn-nav">Product<i class="arrow-nav"></i></button>
+                                <div class="dropdown-content-nav">
+                                    <a href="@Url.Action("Index", "Search")">Games</a>
+                                    <a asp-action="Index" asp-controller="Search" asp-route-SortOrder="PriceDesc">New Releases</a>                                    
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown"><button class="dropbtn-nav">News</button></div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="dropbtn-nav">About<i class="arrow-nav"></i></button>
+                                <div class="dropdown-content-nav">
+                                    <a href="#">FAQs</a>
+                                    <a href="#">About Us</a>
+                                    <a href="#">Coming Soon</a>
+                                    <a href="#">Galleries</a>                                    
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown"><button class="dropbtn-nav">Community</button></div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown"><button class="dropbtn-nav">Contact</button></div>
+                        </li>
+                    </ul>
+                    <div class="navbar-text">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="dropdown">
+                                <button class="dropbtn-nav-login">@User.Identity.Name</button>                                
+                                <div class="dropdown-content-nav">
+                                    <a href="#">Profile</a>
+                                    <a href="#">Settings</a>
+                                    <a asp-action="Logout" asp-controller="Authentication">Log Out</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <a class="dropbtn-nav-login" asp-action="Index" asp-controller="Authentication"><i style="color:#b791e5;" class="fas fa-user"></i></a>
+                        }
+                    </div>
+                    <div class="navbar-text">
+                        @{
+                            Context.Session.Get("Cart", out Cart cart);
+                            if (cart != null && cart.TotalCount > 0)
+                            {
+                                <a href="@Url.Action("Index", "Order")" class="dropbtn-nav-login" style="text-decoration:none;"><i style="color:#b791e5;" class="fas fa-shopping-cart"></i>
+                                    <sup style="color:red; font-size:18px;">@cart.TotalCount</sup></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Index", "Order")" class="dropbtn-nav-login"><i style="color:#b791e5;" class="fas fa-shopping-cart"></i></a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand navbar-dark navbar-secondPart">
+            <div class="container">
+                <ul class="navbar-nav">
+                    @{
+                        var url = Context.Request.Path;
+                        if (url == "/Home" || url == "/")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="@Url.Action("Index", "Home")">Discover</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Search")">Browse</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Home")">Discover</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="@Url.Action("Index", "Search")">Browse</a>
+                            </li>
+                        }
+                    }
+                </ul>
+                <div class="search">
+                    <form asp-action="Index" asp-controller="Search" method="post" asp-route-searchForm="search">
+                        <input class="input" type="search" name="searchQuery" placeholder="Search..." />
+                    </form>
+                    <button class="btn-nav" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    @*////////////////////////////////////////////////////MAIN BODY////////////////////////////////////////////////*@
+    <div>
+        <main role="main" class="pb-5 text-white">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*/////////////////////////////////////////////////////FOOTER///////////////////////////////////////////////////*@
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; <span id="year"></span> - E_commerceWebProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <vc:sign-up/>
+
+    <script>
+        const search = document.querySelector('.search')
+        const btn = document.querySelector('.btn-nav')
+        const input = document.querySelector('.input')
+
+        btn.addEventListener('click', () => {
+            search.classList.toggle('active')
+            input.focus()
+        })
+
+        $("#year").text(new Date().getFullYear());
+    </script>   
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

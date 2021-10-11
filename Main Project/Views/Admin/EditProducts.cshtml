@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Product>
+
+@{ Layout = "~/Views/Shared/admin_layout.cshtml";}
+
+<section class="">
+    <div class="container menu">
+        <div>
+            <a asp-action="CreateUser" asp-controller="Admin">Create User</a><br />
+            <a asp-action="CreateProduct" asp-controller="Admin">Create New Product</a><br />
+            <a asp-action="EditProducts" asp-controller="Admin">Edit Existing Products</a><br />
+            <a asp-action="Index" asp-controller="Admin">Exit to Main Menu</a>
+        </div>
+        <div>@Model.Count()</div>
+        <table>
+            <tr><th>Title</th><th>Author</th><th>Price</th><th></th></tr>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Title</td>
+                    <td>@product.Author</td>
+                    <td>@product.Price</td>
+                    <td>
+                        <form asp-action="DeleteProduct" asp-controller="Admin" asp-route-id="@product.Id" method="post">
+                            <a class="" href="#" >Edit</a>
+                            <button type="submit" class="">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</section>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

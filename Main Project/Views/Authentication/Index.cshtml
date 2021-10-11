@@ -1,0 +1,28 @@
+﻿@model LoginViewModel
+
+<div class="text-center pt-5 mt-2">
+    <form class="form-signin" asp-controller="Authentication" asp-action="Index" method="post">
+        <img class="mb-4" src="~/img/logo.png" alt="" width="200" height="200">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+        <label asp-for="@Model.UserName" class="sr-only">Username</label>
+        <input asp-for="@Model.UserName" class="form-control" placeholder="Username" required autofocus>
+
+        <label asp-for="@Model.Password" class="sr-only">Password</label>
+        <input asp-for="@Model.Password" class="form-control" placeholder="Password" required>
+        <span class="text-danger" asp-validation-for="@Model.Password"></span>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input asp-for="@Model.RememberMe"> Remember me
+            </label>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <div>Don't have an account? <a href="@Url.Action(nameof(AuthenticationController.RegisterUser), "Authentication")">Sign Up</a></div>
+    </form>
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

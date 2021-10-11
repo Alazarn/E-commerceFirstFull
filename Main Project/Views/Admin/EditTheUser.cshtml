@@ -1,0 +1,32 @@
+﻿@model CreateAndEditUserViewModel
+
+@{ Layout = "~/Views/Shared/admin_layout.cshtml";}
+
+<section class="">
+    <div class="container menu">
+        <div>
+            <a asp-action="CreateUser" asp-controller="Admin">Create User</a><br />
+            <a asp-action="CreateProduct" asp-controller="Admin">Create New Product</a><br />
+            <a asp-action="EditProducts" asp-controller="Admin">Edit Existing Products</a><br />
+            <a asp-action="Index" asp-controller="Admin">Exit to Main Menu</a>
+        </div>
+        <div>
+            <h3>@Model.UserName</h3>
+            <form asp-action="EditTheUser" method="post">
+                <input type="hidden" name="userId" value="@Model.Id" />
+                <div class="form-group">
+                    @foreach (IdentityRole role in Model.AllRoles)
+                    {
+                        <input type="checkbox" name="UserRoles" value="@role.Name"
+                               @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+                        }
+                </div>
+                <button type="submit" class="">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,115 @@
+﻿@model ProductCategoriesViewModel
+
+<form asp-action="Index" asp-controller="Search" asp-route-category="">
+    <input class="cat-list-btn" type="submit" value="All Categories" id="none" name="genre" data-custom="none"/>
+</form>
+
+<button class="accordion">Genre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="arrow-cat"></i></button>
+<div class="panel">
+    <div class="panel-inner">
+        <form asp-action="Index" asp-controller="Search" >
+            @{ int i = 1;
+                @foreach (string genre in Model.genre)
+                {
+                    <input class="cat-list-btn" type="submit" value="@genre" name="Genre" id="buton" data-custom="genre_@i">
+                    i++;
+                }
+            }
+        </form>
+    </div>
+</div>
+
+<button class="accordion">Features&nbsp;<i class="arrow-cat"></i></button>
+<div class="panel">
+    <div class="panel-inner">
+        <form asp-action="Index" asp-controller="Search" asp-route-category="">
+            @{ int b = 1;
+                @foreach (string feature in Model.features)
+                {
+                    <input class="cat-list-btn" type="submit" value="@feature" name="Features" id="buton" data-custom="feature_@b">
+                    b++;
+                }
+            }
+        </form>
+    </div>
+</div>
+
+<button class="accordion">Platform<i class="arrow-cat"></i></button>
+<div class="panel">
+    <div class="panel-inner">
+        <form asp-action="Index" asp-controller="Search" asp-route-category="">
+            @{ int c = 1;
+                @foreach (string platform in Model.platform)
+                {
+                    <input class="cat-list-btn" type="submit" value="@platform" name="Platform" id="buton" data-custom="platform_@c">
+                    c++;
+                }
+            }
+        </form>
+    </div>
+</div>
+
+
+<script>
+    let acc = document.getElementsByClassName("accordion");
+
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            let arrow = this.firstElementChild;
+
+            if (arrow.classList.contains("arrow-cat")) {
+                arrow.className = "arrow-cat-up";
+            } else {
+                arrow.className = "arrow-cat";
+            }
+
+
+            let panel = this.nextElementSibling;
+            if (panel.style.display === "none") {
+                panel.style.display = "block";
+            } else {
+                panel.style.display = "none";
+            }
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    let allCat = document.querySelector("#none");
+    let firstBtn = document.querySelectorAll("#buton");
+
+    allCat.addEventListener("click", function () {
+        sessionStorage.clear();
+    });
+
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+
+        firstBtn.forEach((btn) => {
+            if (key === btn.dataset.custom) {
+                btn.classList.remove("cat-list-btn");
+                btn.classList.add("clicked");
+            }
+        });
+    }
+
+    firstBtn.forEach((btn) => {
+        btn.addEventListener("click", toggle);
+
+        function toggle() {            
+            if (this.classList.contains("cat-list-btn")) {
+                this.classList.remove("cat-list-btn");
+                this.classList.add("clicked");
+                let value = this.dataset.custom;
+                sessionStorage.setItem(value, value);
+            } else {
+                this.classList.remove("clicked");
+                this.classList.add("cat-list-btn");
+                let value = this.dataset.custom;
+                sessionStorage.removeItem(value);
+            }
+        }
+    });
+</script>

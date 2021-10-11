@@ -1,0 +1,39 @@
+﻿@model UserRegistrationViewModel
+
+<div class="text-center pt-5 mt-1">
+    <form class="form-signin" asp-controller="Authentication" asp-action="RegisterUser" method="post">
+        <img class="mb-4" src="~/img/logo.png" alt="" width="200" height="200">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+
+        <div class="form-group">
+            <label asp-for="@Model.UserName" class="sr-only"></label>
+            <input asp-for="@Model.UserName" class="form-control" placeholder="Username" required autofocus>
+            <span class="text-danger" asp-validation-for="@Model.UserName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Email" class="sr-only">Email</label>
+            <input asp-for="@Model.Email" class="form-control" placeholder="Email address" required>
+            <span class="text-danger" asp-validation-for="@Model.Email"></span>
+        </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Password" class="sr-only">Password</label>
+                <input asp-for="@Model.Password" class="form-control" placeholder="Password" required>
+                <span class="text-danger" asp-validation-for="@Model.Password"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PasswordConfirm" class="sr-only">Password</label>
+                <input asp-for="@Model.PasswordConfirm" class="form-control" placeholder="Confirm Password" required>
+                <span class="text-danger" asp-validation-for="@Model.PasswordConfirm"></span>
+            </div>
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+            <div>Already have an account? <a href="@Url.Action("Index", "Authentication")">Sign In</a></div>
+    </form>
+</div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,42 @@
+﻿@model UsersViewModel
+
+@{ Layout = "~/Views/Shared/admin_layout.cshtml";}
+
+<section class="">
+    <div class="container menu">
+        <div>
+            <a asp-action="EditUsers" asp-controller="Admin">Edit Users</a><br />
+            <a asp-action="CreateProduct" asp-controller="Admin">Create New Product</a><br />
+            <a asp-action="EditProducts" asp-controller="Admin">Edit Existing Products</a><br />
+            <a asp-action="Index" asp-controller="Admin">Exit to Main Menu</a>
+        </div>
+        <form method="post" asp-controller="Admin" asp-action="CreateUser" id="regform">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="user-form-parts">
+                <div class="form-group text-right">
+                    <label asp-for="@Model.UserForm.FirstName"></label>
+                    <input asp-for="@Model.UserForm.FirstName" />
+                </div>
+                <div class="form-group text-right">
+                    <label asp-for="@Model.UserForm.LastName"></label>
+                    <input asp-for="@Model.UserForm.LastName" />
+                </div>
+                <div class="form-group text-right">
+                    <label asp-for="@Model.UserForm.UserName"></label>
+                    <input asp-for="@Model.UserForm.UserName" />
+                </div>
+                <div class="form-group text-right">
+                    <label asp-for="@Model.UserForm.Email">Email&nbsp;&nbsp;&nbsp;</label>
+                    <input asp-for="@Model.UserForm.Email" />
+                </div>
+                <div class="form-group text-right">
+                    <label asp-for="@Model.UserForm.Password"></label>
+                    <input asp-for="@Model.UserForm.Password" />
+                </div>
+                <div class="form-group text-right" >
+                    <button type="submit">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

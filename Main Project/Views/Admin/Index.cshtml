@@ -1,0 +1,13 @@
+﻿@{ Layout = "~/Views/Shared/admin_layout.cshtml";}
+
+<section class="">
+    <div class="container menu">
+        <div>
+            <a asp-action="@nameof(AdminController.CreateUser)" asp-controller="Admin">Create New User</a><br />
+            <a asp-action="EditUsers" asp-controller="Admin">Edit Users</a><br />
+            <a asp-action="CreateProduct" asp-controller="Admin">Create New Product</a><br />
+            <a asp-action="EditProducts" asp-controller="Admin">Edit Existing Products</a><br />
+            <a asp-action="Index" asp-controller="Home">Return To The WebSite</a><br />
+        </div>
+    </div>
+</section>
