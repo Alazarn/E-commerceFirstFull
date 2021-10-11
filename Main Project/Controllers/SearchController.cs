@@ -19,10 +19,10 @@ namespace E_commerceFirstFull.Controllers
             this.repository = productRepository;
         }        
 
-        public IActionResult Index(string searchQuery, string searchForm, RequestParameters request)
+        public IActionResult Index(RequestParameters request)
         {
-            if (searchForm != null)
-                productService.SearchQueryCached = searchQuery;            
+            if (request.SearchForm == true)
+                productService.SearchQueryCached = request.SearchQuery;            
 
             var selectedProducts = repository.GetByTitle(productService.SearchQueryCached);
             productService.GetListOfCategories(request.Genre, request.Features, request.Platform);

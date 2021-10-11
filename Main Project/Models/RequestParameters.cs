@@ -37,5 +37,9 @@ namespace E_commerceFirstFull.Models
         public string Features { get; set; }
         public string Platform { get; set; }
         public SortState SortOrder { get; set; }
+        public bool SearchForm { get; set; }
+        public string SearchQuery { get; set; }
+
+
     }
 }

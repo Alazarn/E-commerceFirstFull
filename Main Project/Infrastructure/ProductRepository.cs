@@ -20,7 +20,7 @@ namespace E_commerceFirstFull.Infrastructure
 
         public IEnumerable<Product> GetByTitle(string searchQuery)
         {
-            if (string.IsNullOrEmpty(searchQuery))  //add AsNoTracking
+            if (string.IsNullOrEmpty(searchQuery))
                 return Products;            
             else
                 return Products.Where(x => x.Title.ToLower().Contains(searchQuery.ToLower()));            
@@ -52,7 +52,7 @@ namespace E_commerceFirstFull.Infrastructure
 
         public void Update(Product entity)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //in todo list
         }
     }
 }

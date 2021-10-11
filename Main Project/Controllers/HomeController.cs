@@ -20,12 +20,7 @@ namespace E_commerceFirstFull.Controllers
         public IActionResult Index()
         {
             return View(productRepository.Products);
-        }
-
-        /*public IActionResult SearchInitializer(string query)
-        {
-            return RedirectToActionPermanent("Index", "Search", query);
-        }*/
+        }        
 
         public IActionResult Privacy()
         {
