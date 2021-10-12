@@ -1,19 +1,17 @@
 using E_commerceFirstFull.Controllers;
-using E_commerceFirstFull.Infrastructure;
 using E_commerceFirstFull.Models;
-using E_commerceFirstFull.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 using Moq;
+using Xunit;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
+using Microsoft.AspNetCore.Mvc;
 
 namespace E_commerceFirstFull.Tests
 {
-    public class ProductTest
+    public class ProductTests
     {
         [Fact]
         public void RepositoryReturnsValues()
@@ -45,7 +43,7 @@ namespace E_commerceFirstFull.Tests
             Assert.Null(result.Model);
         }
 
-        private List<Product> FormProduct()
+        public List<Product> FormProduct()
         {
             return new List<Product> {
             new Product

@@ -23,8 +23,5 @@ namespace E_commerceFirstFull.Infrastructure
 
         public Order GetById(Guid id) => Orders.Single(o => o.Id == id);
 
-        public void Update(Order order)
-        {
-        }
     }
 }

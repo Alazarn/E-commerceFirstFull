@@ -9,6 +9,5 @@ namespace E_commerceFirstFull.Models
     {
         Order Create();
         Order GetById(Guid id);
-        void Update(Order order);
     }
 }
