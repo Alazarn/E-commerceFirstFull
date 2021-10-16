@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 
 using E_commerceFirstFull.Infrastructure;
 using E_commerceFirstFull.Models;
@@ -35,9 +33,7 @@ namespace E_commerceFirstFull
             services.AddDistributedMemoryCache();
             services.AddSession();
 
-            services.AddDbContext<StoreDbContext>(opts => {
-                opts.UseSqlServer(Configuration["ConnectionStrings:GameStoreConnection"]);
-            });
+            services.ConfigureDbContext(Configuration);
             services.ConfigureIdentity();
 
             services.AddScoped<ILoggerManager, LoggerManager>();
