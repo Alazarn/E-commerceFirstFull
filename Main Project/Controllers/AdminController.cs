@@ -15,12 +15,12 @@ namespace E_commerceFirstFull.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly ILoggerManager logger;
+        private readonly ILoggerService logger;
         private readonly UserManager<User> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IWebHostEnvironment environment;
         private readonly IProductRepository<Product> repository;
-        public AdminController(ILoggerManager logger, UserManager<User> userManager, IWebHostEnvironment environment,
+        public AdminController(ILoggerService logger, UserManager<User> userManager, IWebHostEnvironment environment,
             IProductRepository<Product> repository, RoleManager<IdentityRole> roleManager)
         {
             this.logger = logger;
@@ -77,6 +77,7 @@ namespace E_commerceFirstFull.Controllers
             User user = await userManager.FindByIdAsync(id);
             if (user == null)
             {
+                logger.LogInfo($"This User with Id: {user.Id} is doesn't exist");
                 return NotFound();
             }
 
@@ -118,20 +119,6 @@ namespace E_commerceFirstFull.Controllers
                     await userManager.RemoveFromRolesAsync(user, removedRoles);
 
                     return RedirectToAction("EditUsers");
-
-
-                    //var result = await userManager.UpdateAsync(user);
-                    //if (result.Succeeded)
-                    //{
-                    //    return RedirectToAction("EditUsers");
-                    //}
-                    //else
-                    //{
-                    //    foreach (var error in result.Errors)
-                    //    {
-                    //        ModelState.AddModelError(string.Empty, error.Description);
-                    //    }
-                    //}
                 }
             }
             return View(model);

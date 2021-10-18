@@ -28,7 +28,7 @@ namespace E_commerceFirstFull
                 }
                 catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILoggerManager>();
+                    var logger = services.GetRequiredService<ILoggerService>();
                     logger.LogInfo($"An error occurred while seeding the database:  {ex}");
                 }
 

@@ -3,10 +3,10 @@ using NLog;
 
 namespace E_commerceFirstFull.Services
 {
-    public class LoggerManager : ILoggerManager
+    public class LoggerService : ILoggerService
     {
         private static ILogger logger = LogManager.GetCurrentClassLogger();
-        public LoggerManager()
+        public LoggerService()
         {
         }
         public void LogDebug(string message)

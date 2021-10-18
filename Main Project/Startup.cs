@@ -36,13 +36,13 @@ namespace E_commerceFirstFull
             services.ConfigureDbContext(Configuration);
             services.ConfigureIdentity();
 
-            services.AddScoped<ILoggerManager, LoggerManager>();
+            services.AddScoped<ILoggerService, LoggerService>();
             services.AddScoped<IProductRepository<Product>, ProductRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<ProductService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerService logger)
         {
             if (env.IsDevelopment())
             {

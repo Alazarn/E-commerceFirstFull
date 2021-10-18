@@ -12,10 +12,10 @@ namespace E_commerceFirstFull.Controllers
 {
     public class AuthenticationController : Controller
     {
-        private readonly ILoggerManager logger;
+        private readonly ILoggerService logger;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
-        public AuthenticationController(ILoggerManager logger, UserManager<User> userManager, SignInManager<User> signInManager)
+        public AuthenticationController(ILoggerService logger, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.logger = logger;
             this.userManager = userManager;
@@ -51,6 +51,11 @@ namespace E_commerceFirstFull.Controllers
                     ModelState.AddModelError("", "Email or Password are incorrect");                    
                 }                
             }
+            else
+            {
+                logger.LogInfo("Incorrect login data.");
+            }
+
 
             return View(loginModel);
         }

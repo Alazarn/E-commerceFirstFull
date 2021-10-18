@@ -10,7 +10,7 @@ namespace E_commerceFirstFull.Extensions
 {
     public static class ExceptionMiddlewareExtensions
     {
-        public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILoggerManager logger)
+        public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILoggerService logger)
         {
             app.UseExceptionHandler(appError =>
             {
